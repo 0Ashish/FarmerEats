@@ -1,50 +1,91 @@
 package com.example.farmereats
 
+import android.graphics.Color
 import android.os.Bundle
-import android.view.View
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
-
+import com.example.farmereats.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-       setContentView(R.layout.activity_main)
 
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Hide the ActionBar if it's present
-        supportActionBar?.hide()
+        // Edge-to-edge layout and system bars configuration
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val controller = WindowInsetsControllerCompat(window, binding.root)
+        controller.hide(WindowInsetsCompat.Type.systemBars())
+        controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 
-        // Obtain the NavHostFragment from the layout
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        // Get the NavController
+        // NavHostFragment and NavController setup for navigation
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-
-        // Set up the ActionBar with the Navigation UI
         setupActionBarWithNavController(navController)
 
+        // Onboarding logic
+        var currentImageIndex = 0
+        binding.joinButton.setOnClickListener {
+            currentImageIndex += 1
+            when (currentImageIndex % 3) {
+                0 -> updateOnboardingScreen(
+                    R.drawable.on_boarding,
+                    R.drawable.toggle1,
+                    R.string.onBoarding2,
+                    "#5EA25F"
+                )
+                1 -> updateOnboardingScreen(
+                    R.drawable.on_boarding2,
+                    R.drawable.toggle2,
+                    R.string.onBoarding3,
+                    "#D5715B"
+                )
+                2 -> updateOnboardingScreen(
+                    R.drawable.on_boarding3,
+                    R.drawable.toggle3,
+                    R.string.onBoarding1,
+                    "#F8C569"
+                )
+            }
+        }
+
+        // Example navigation to login screen when login text is clicked
+        binding.loginText.setOnClickListener {
+            navController.navigate(R.id.login)
+        }
     }
 
+    private fun updateOnboardingScreen(
+        imageResId: Int,
+        toggleResId: Int,
+        descriptionResId: Int,
+        backgroundColor: String
+    ) {
+        binding.onBoardingImg.setImageResource(imageResId)
+        binding.toggle.setImageResource(toggleResId)
+        binding.OnBoardingDescription.setText(descriptionResId)
+        binding.root.setBackgroundColor(Color.parseColor(backgroundColor))
+        binding.joinButton.setBackgroundColor(Color.parseColor(backgroundColor))
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
-
-

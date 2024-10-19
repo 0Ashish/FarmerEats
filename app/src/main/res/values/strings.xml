@@ -68,5 +68,10 @@ Attach proof of registration
 Choose the hours your farm is open for pickups. This will allow customers to order deliveries.
 </string>
 
+    <string name="onBoarding1">Sell your farm fresh products directly to consumers, cutting out the middleman and reducing emissions of the global supply chain. </string>
+    <string name="onBoarding2">Our team of delivery drivers will make sure your orders are picked up on time and promptly delivered to your customers.</string>
+    <string name="onBoarding3">We love the earth and know you do too! Join us in reducing our local carbon footprint one order at a time. </string>
+
+
 
 </resources>
