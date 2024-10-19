@@ -1,6 +1,8 @@
 package com.example.farmereats.fragments
 
+import ApiRepository
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import com.example.farmereats.databinding.FragmentOtpBinding
 
 class Otp : Fragment() {
     private lateinit var binding : FragmentOtpBinding
+    private lateinit var apiRepository: ApiRepository
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,6 +29,24 @@ class Otp : Fragment() {
 
         binding.loginfromverifyOtp.setOnClickListener{
             findNavController().navigate(R.id.action_otp_to_login)
+        }
+        clickCall()
+    }
+
+    fun clickCall() {
+        binding.submitotp.setOnClickListener{
+            val otp = binding.etOtp1.text.toString()+binding.etOtp2.text.toString()+binding.etOtp3.text.toString()+binding.etOtp4.text.toString()
+            apiRepository.verifyOtp(
+                otp
+            ){
+                it.fold({
+                    // Handle success
+                    Log.d("response",it.toString())
+                    findNavController().navigate(R.id.resetPassword)
+                },{
+                    // Handle failure
+                })
+            }
         }
     }
 }

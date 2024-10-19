@@ -1,5 +1,6 @@
 package com.example.farmereats.fragments
 
+import ApiRepository
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.example.farmereats.databinding.FragmentSignUpVerification2Binding
 
 class SignUpVerification2 : Fragment() {
     private lateinit var binding :FragmentSignUpVerification2Binding
+    private lateinit var apiRepository: ApiRepository
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +32,24 @@ class SignUpVerification2 : Fragment() {
         }
         binding.submitToConfirm.setOnClickListener{
             findNavController().navigate(R.id.action_signUpVerification2_to_signUpConfirmation)
+        }
+    }
+
+    fun clickCall() {
+        binding.submitToConfirm.setOnClickListener{
+            apiRepository.userRegister(
+
+            ) { result ->
+                result.fold(
+                    onSuccess = {
+                        // Handle successful login
+                        findNavController().navigate(R.id.action_signUpVerification2_to_signUpConfirmation)
+                    },
+                    onFailure = {
+                        // Handle error
+                    }
+                )
+            }
         }
     }
 

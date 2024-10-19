@@ -1,6 +1,8 @@
 package com.example.farmereats.fragments
 
+import ApiRepository
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import com.example.farmereats.databinding.FragmentResetPaswordBinding
 
 class ResetPassword : Fragment() {
     private lateinit var binding: FragmentResetPaswordBinding
+    private lateinit var apiRepository: ApiRepository
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,6 +27,28 @@ class ResetPassword : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.loginfromresetpass.setOnClickListener{
             findNavController().navigate(R.id.action_resetPassword2_to_login)
+        }
+        clickCall()
+    }
+    fun clickCall() {
+        binding.submitPassword.setOnClickListener{
+            val password = binding.newPass.text.toString()
+            val cpassword = binding.confirmPassword.text.toString()
+            if(password.equals(cpassword)){
+                apiRepository.resetPassword(
+                    token = "token",
+                    password,
+                    cpassword
+                ){
+                    it.fold({
+                        // Handle success
+                        Log.d("response",it.toString())
+                        findNavController().navigate(R.id.login)
+                    },{
+                        // Handle failure
+                    })
+                }
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package com.example.farmereats
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -66,8 +67,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Example navigation to login screen when login text is clicked
         binding.loginText.setOnClickListener {
+            Log.d("MainActivity", "Navigating to login screen")
             navController.navigate(R.id.login)
         }
     }
@@ -88,4 +89,5 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
 }
