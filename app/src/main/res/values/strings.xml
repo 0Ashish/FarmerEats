@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">FarmerEats</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="farmereats">FarmerEats</string>
+    <string name="welcome_bac">Welcome Back!</string>
+    <string name="new_here_cr">New here?  Create account</string>
+    <string name="email_addre">Email Address</string>
+    <string name="password">Password</string>
+    <string name="forg_pass">Forgot Password?</string>
+    <string name="welcome">Welcome</string>
+    <string name="remem_pass">Remember your password? </string>
+    <string name="send_otp">Send Otp</string>
+    <string name="login">Login</string>
+    <string name="submit">Submit</string>
+    <string name="new_pass">New Password</string>
+    <string name="cnf_new_pass">Confirm new password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="login_with">or login with</string>
+    <string name="forgot">Forgot?</string>
+    <string name="you_re_all_">You are all done!</string>
+    <string name="farm_info">Farm Info</string>
+    <string name="verification">Verification</string>
+    <string name="b_hours">Business Hours</string>
+    <string name="hang_tight_">
+Hang tight!  We are currently reviewing your account and will follow up with you in 2-3 business days. In the meantime, you can setup your inventory.
+</string>
+
+    <!-- strings.xml -->
+    <string name="signup_1_of">
+Signup 1 of 4
+</string>
+    <string name="signup_2_of">
+Signup 2 of 4
+</string>
+    <string name="signup_3_of">
+Signup 3 of 4
+</string>
+    <string name="signup_4_of">
+Signup 4 of 4
+</string>
+
+    <string name="welcome_">
+Welcome!
+</string>
+    <string name="or_signup_w">
+or signup with
+</string>
+
+    <string-array name="state_array">
+        <item>Alabama</item>
+        <item>Alaska</item>
+        <item>Arizona</item>
+        <item>Arkansas</item>
+        <!-- Add more states as needed -->
+    </string-array>
+
+    <string name="attached_pr">
+Attached proof of Department of Agriculture registrations i.e. Florida Fresh, USDA Approved, USDA Organic
+</string>
+    <string name="attach_proo">
+Attach proof of registration
+</string>
+    <string name="choose_the_">
+Choose the hours your farm is open for pickups. This will allow customers to order deliveries.
+</string>
+
+
+</resources>

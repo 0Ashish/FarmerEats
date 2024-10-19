@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/forgotPassword">
+
+    <fragment
+        android:id="@+id/forgotPassword"
+        android:name="com.example.farmereats.fragments.ForgotPassword"
+        android:label="ForgotPassword" >
+        <action
+            android:id="@+id/action_forgotPassword_to_otp"
+            app:destination="@id/otp" />
+        <action
+            android:id="@+id/action_forgotPassword_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.farmereats.fragments.Login"
+        android:label="Login" >
+        <action
+            android:id="@+id/action_login_to_forgotPassword"
+            app:destination="@id/forgotPassword" />
+        <action
+            android:id="@+id/action_login_to_signUp"
+            app:destination="@id/signUp" />
+    </fragment>
+    <fragment
+        android:id="@+id/otp"
+        android:name="com.example.farmereats.fragments.Otp"
+        android:label="Otp" >
+        <action
+            android:id="@+id/action_otp_to_resetPassword2"
+            app:destination="@id/resetPassword2" />
+        <action
+            android:id="@+id/action_otp_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_otp_to_forgotPassword"
+            app:destination="@id/forgotPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/happy"
+        android:name="com.example.farmereats.fragments.Happy"
+        android:label="Happy" >
+        <action
+            android:id="@+id/action_happy_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPassword2"
+        android:name="com.example.farmereats.fragments.ResetPassword"
+        android:label="ResetPassword" >
+        <action
+            android:id="@+id/action_resetPassword2_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.example.farmereats.fragments.SignUp"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUp_to_signUpFarmInfo"
+            app:destination="@id/signUpFarmInfo" />
+        <action
+            android:id="@+id/action_signUp_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpConfirmation"
+        android:name="com.example.farmereats.fragments.SignUpConfirmation"
+        android:label="fragment_sign_up_confirmation"
+        tools:layout="@layout/fragment_sign_up_confirmation" />
+    <fragment
+        android:id="@+id/signUpFarmInfo"
+        android:name="com.example.farmereats.fragments.SignUpFarmInfo"
+        android:label="fragment_sign_up_farm_info"
+        tools:layout="@layout/fragment_sign_up_farm_info" >
+        <action
+            android:id="@+id/action_signUpFarmInfo_to_signUpVerification"
+            app:destination="@id/signUpVerification" />
+        <action
+            android:id="@+id/action_signUpFarmInfo_to_signUpVerification2"
+            app:destination="@id/signUpVerification" />
+        <action
+            android:id="@+id/action_signUpFarmInfo_to_signUp"
+            app:destination="@id/signUp" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpVerification"
+        android:name="com.example.farmereats.fragments.SignUpVerification"
+        android:label="fragment_sign_up_verification"
+        tools:layout="@layout/fragment_sign_up_verification" >
+        <action
+            android:id="@+id/action_signUpVerification_to_signUpHours"
+            app:destination="@id/signUpHours" />
+        <action
+            android:id="@+id/action_signUpVerification_to_signUpFarmInfo"
+            app:destination="@id/signUpFarmInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpHours"
+        android:name="com.example.farmereats.fragments.SignUpHours"
+        android:label="fragment_sign_up_hours"
+        tools:layout="@layout/fragment_sign_up_hours" >
+        <action
+            android:id="@+id/action_signUpHours_to_signUpVerification2"
+            app:destination="@id/signUpVerification2" />
+        <action
+            android:id="@+id/action_signUpHours_to_signUpVerification"
+            app:destination="@id/signUpVerification" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpVerification2"
+        android:name="com.example.farmereats.fragments.SignUpVerification2"
+        android:label="fragment_sign_up_verification2"
+        tools:layout="@layout/fragment_sign_up_verification2" >
+        <action
+            android:id="@+id/action_signUpVerification2_to_signUpConfirmation"
+            app:destination="@id/signUpConfirmation" />
+        <action
+            android:id="@+id/action_signUpVerification2_to_signUpHours"
+            app:destination="@id/signUpHours" />
+    </fragment>
+</navigation>

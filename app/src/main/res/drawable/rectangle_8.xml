@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="126dp"
+        android:height="48dp"
+        android:viewportWidth="126"
+        android:viewportHeight="48">
+
+        <!-- Grouping the path to clip the shape -->
+        <group>
+            <!-- Clipping the rounded rectangle shape -->
+            <clip-path
+                android:pathData="M8,0 H118 C122.418,0 126,3.58172 126,8 V40 C126,44.4183 122.418,48 118,48 H8 C3.58172,48 0,44.4183 0,40 V8 C0,3.58172 3.58172,0 8,0 Z"/>
+            <!-- Filling the clipped path -->
+            <path
+                android:pathData="M0 0V48H126V0"
+                android:fillColor="#C8C6C6" />
+        </group>
+    </vector>
