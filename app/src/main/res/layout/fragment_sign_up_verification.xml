@@ -89,6 +89,8 @@
 
     <ImageView
         android:id="@+id/dropImage"
+        android:focusable="true"
+        android:clickable="true"
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:layout_alignParentLeft="true"
